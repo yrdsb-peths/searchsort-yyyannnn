@@ -26,7 +26,7 @@ public class Util {
         // Note: This generates a random number between 0 and 5:
         // int randomNum = random.nextInt(6);
         for(int i = arr.length-1; i >= 1; i--) {
-            int j = random.nextInt(i);
+            int j = random.nextInt(i+1);
             exch(arr, i, j);
         }
         return arr;
@@ -47,10 +47,12 @@ public class Util {
     public static int[] generateRandomArray(int n, Long seed) {
         // Create a new integer array of size n
         int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = i;
+        }
         // Shuffle the array using the Shuffle method with the given seed
-        shuffle(arr, seed);
         // Return the shuffled array
-        return new int[n];
+        return shuffle(arr, seed);
     }
 
     /**
