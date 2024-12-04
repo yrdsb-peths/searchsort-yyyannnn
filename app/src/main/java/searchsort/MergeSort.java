@@ -16,7 +16,7 @@ public class MergeSort extends Sort {
             return;
         }
 
-        int mid = (lo + hi) /2;              //middle element
+        int mid = lo + (hi - lo)/2;              //middle element
         mergeSort(arr, aux, lo, mid);       //sort left side of array
         mergeSort(arr, aux, mid + 1, hi);    //sort right side of array
         merge(arr, aux, lo, mid, hi);     //combine both halves 
@@ -31,20 +31,17 @@ public class MergeSort extends Sort {
         }
 
         int i = lo;                               //left side index
-        int j = mid + 1;                          //left side index
+        int j = mid + 1;                          //right side index
 
         for (int k = lo; k <= hi; k++) {         //merge
-            if (i>mid) {                         //left is exhausted
-                arr[k] = aux[j];                 // or arr[k] = aux[j++]
-                j++;
+            if (i > mid) {                         //left is exhausted
+                arr[k] = aux[j++];              
             } else if (j > hi) {                //right is exhausted
-                arr[k] = aux[i];
+                arr[k] = aux[i++];
             } else if (aux[j] < aux[i]) {       //right element smaller than left
-                arr[k] = aux[j];
-                j++;
+                arr[k] = aux[j++];
             } else {                           //left element smaller than right
-                arr[k] = aux[i];
-                i++;
+                arr[k] = aux[i++];
             }
         }
     }
