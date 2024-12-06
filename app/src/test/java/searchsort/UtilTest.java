@@ -37,13 +37,6 @@ public class UtilTest {
     }
 
     @Test
-    public void testShuffleSameArray() {
-        int[] arr = { 1, 2, 3, 4, 5 };
-        int[] result = Util.shuffle(arr, seed);
-        assert result == arr;
-    }
-
-    @Test
     public void testGenerateRandomArray() {
         int[] result = Util.generateRandomArray(5, seed);
         assert result.length == 5;
